@@ -5,6 +5,10 @@ This package adds a single function called `parse_time` to your project. It does
 
 This function can parse times that are in a range like `11-5` or `11 AM to 5 PM`.
 
+By passing a second argument (boolean) you can turn common words into their 24 hour equivalent.
+
+For example: `11 AM - Midnight` would become `11 AM - 0:00`.
+
 ## Installation
 
 Put a file named composer.json at the root of your project, containing your project dependencies:
@@ -25,6 +29,7 @@ Or use `composer require invokemedia/parsetime`
 parse_time('11 AM - 5 PM');
 parse_time('11:22 - 5:31');
 parse_time('I will arrive at 1:22 and leave at 9:45');
+parse_time('11 AM - Midnight', true); // would become 11 AM - 0:00
 ```
 
 The function basically wraps up the [date_parse](http://php.net/manual/en/function.date-parse.php) function. It will be run over the match for `11 AM` and `5 PM`.
