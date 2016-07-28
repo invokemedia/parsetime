@@ -1,0 +1,21 @@
+{
+    "name": "invokemedia/parsetime",
+    "version": "1.0.0",
+    "keywords": ["function", "parse", "time", "date", "parse"],
+    "description": "This function can parse times in sentences that are in a range like 11 AM to 5 PM or 5:30 to 1:21.",
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/invokemedia/parsetime",
+    "authors": [
+        {
+            "name": "invokemedia",
+            "email": "webmaster@invokemedia.com"
+        }
+    ],
+    "autoload": {
+        "files": ["src/invokemedia/parsetime.php"]
+    },
+    "require": {}
+}
