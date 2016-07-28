@@ -29,7 +29,7 @@ parse_time('I will arrive at 1:22 and leave at 9:45');
 
 The function basically wraps up the [date_parse](http://php.net/manual/en/function.date-parse.php) function. It will be run over the match for `11 AM` and `5 PM`.
 
-Check out the test file for some of the examples.
+Check out [the test file](https://github.com/invokemedia/parsetime/blob/master/tests/ParsetimeTest.php) for some of the examples.
 
 ## Running tests
 
