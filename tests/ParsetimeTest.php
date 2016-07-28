@@ -206,4 +206,17 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected['minute'], $actual['minute']);
     }
+
+    /** @test */
+    public function itCanUnderstandSomeCommonTimes()
+    {
+        $actual = parse_time('11 AM - Midnight', true);
+        $expected = [
+            ['hour' => 11],
+            ['hour' => 0],
+        ];
+
+        $this->assertEquals($expected[0]['hour'], $actual[0]['hour']);
+        $this->assertEquals($expected[1]['hour'], $actual[1]['hour']);
+    }
 }

@@ -6,12 +6,26 @@ if (! function_exists('parse_time')) {
      * Parse a sentence for time
      *
      * @param string $text
+     * @param bool $replace_words
      *
      * @return string|array
      */
-    function parse_time($text)
+    function parse_time($text, $replace_words = false)
     {
         $matches = [];
+
+        if ($replace_words) {
+            $text = strtolower($text);
+            $phrases = [
+                '0:00' => 'midnight',
+                '12:00' => 'noon',
+                '12:00' => 'midday',
+            ];
+
+            foreach ($phrases as $key => $phrase) {
+                $text = str_replace($phrase, $key, $text);
+            }
+        }
 
         preg_match_all('/(\d{1,2}[\:]?(\d{1,2})?)\s?(am|pm)?/i', $text, $matches);
 
