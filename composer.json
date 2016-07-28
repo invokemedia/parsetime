@@ -1,6 +1,6 @@
 {
     "name": "invokemedia/parsetime",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "keywords": ["function", "parse", "time", "date", "parse"],
     "description": "This function can parse times in sentences that are in a range like 11 AM to 5 PM or 5:30 to 1:21.",
     "require-dev": {

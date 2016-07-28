@@ -40,11 +40,11 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
         $actual = parse_time('11 AM');
         $expected = [
             'hour' => 11,
-            // 'period' => 'AM',
+            'period' => 'AM',
         ];
 
         $this->assertEquals($expected['hour'], $actual['hour']);
-        // $this->assertEquals($expected['period'], $actual['period']);
+        $this->assertEquals($expected['period'], $actual['period']);
     }
 
     /** @test */
@@ -63,19 +63,21 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
     {
         $actual = parse_time('11 AM - 5 PM');
         $expected = [
-            ['hour' => 11,
-            // 'period' => 'AM'
+            [
+                'hour' => 11,
+                'period' => 'AM'
             ],
-            ['hour' => 17,
-            // 'period' => 'PM'
+            [
+                'hour' => 17,
+                'period' => 'PM'
             ],
         ];
 
         $this->assertEquals($expected[0]['hour'], $actual[0]['hour']);
         $this->assertEquals($expected[1]['hour'], $actual[1]['hour']);
 
-        // $this->assertEquals($expected[0]['period'], $actual[0]['period']);
-        // $this->assertEquals($expected[1]['period'], $actual[1]['period']);
+        $this->assertEquals($expected[0]['period'], $actual[0]['period']);
+        $this->assertEquals($expected[1]['period'], $actual[1]['period']);
     }
 
     /** @test */
@@ -83,12 +85,15 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
     {
         $actual = parse_time('11 AM to 5 PM');
         $expected = [
-            ['hour' => 11],
-            ['hour' => 17]
+            ['hour' => 11, 'period' => 'AM'],
+            ['hour' => 17, 'period' => 'PM']
         ];
 
         $this->assertEquals($expected[0]['hour'], $actual[0]['hour']);
         $this->assertEquals($expected[1]['hour'], $actual[1]['hour']);
+
+        $this->assertEquals($expected[0]['period'], $actual[0]['period']);
+        $this->assertEquals($expected[1]['period'], $actual[1]['period']);
     }
 
     /** @test */
@@ -123,8 +128,8 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
 
         $actual = parse_time('I will arrive at 1:22 and leave at 9:45');
         $expected = [
-            ['hour' => 1, 'minute' => 22],
-            ['hour' => 9, 'minute' => 45]
+            ['hour' => 1, 'minute' => 22, 'period' => 'AM'],
+            ['hour' => 9, 'minute' => 45, 'period' => 'AM']
         ];
 
         $this->assertEquals($expected[0]['hour'], $actual[0]['hour']);
@@ -132,6 +137,9 @@ class ParsetimeTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected[0]['minute'], $actual[0]['minute']);
         $this->assertEquals($expected[1]['minute'], $actual[1]['minute']);
+
+        $this->assertEquals($expected[0]['period'], $actual[0]['period']);
+        $this->assertEquals($expected[1]['period'], $actual[1]['period']);
     }
 
     /** @test */
